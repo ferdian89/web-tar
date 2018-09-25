@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each member in member_list
+    li 
+      a(href=member.url) #{member.name} 
+  
+
+  else
+    li There are no authors.

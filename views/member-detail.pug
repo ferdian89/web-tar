@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 Author: #{member.name}
+
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Books : #{member.domisili}
+
+      
+  hr
+  p
+    a(href=author.url+'/delete') Delete author
+  p
+    a(href=member.url+'/update') Update author

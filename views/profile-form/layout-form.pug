@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Album example for Bootstrap
+    // Bootstrap core CSS
+    link(href='../../stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='../../stylesheets/style-form.css', rel='stylesheet')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+    // Custom styles for this template
+    link(href='../public/stylesheets/album.css', rel='stylesheet')
+    script(type='text/javascript', src='https://gc.kis.v2.scr.kaspersky-labs.com/D75634D3-A19C-6F47-B820-45C0CB0E527C/main.js', charset='UTF-8')
+  body
+    .main-container
+      .top-main-container
+        .top-main-container-item.top-main-container-item-left
+          a(href='http://localhost:3000/profile/')
+            span.fa.fa-arrow-left
+            | PROFIL
+        .top-main-container-item.top-main-container-item-right simpan
+      br
+      br        
+      block content

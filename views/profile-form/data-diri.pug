@@ -1,0 +1,37 @@
+extends layout-form
+
+block content
+  .bottom-main-container
+    form(method='POST', action='')
+      .form-group
+        label(for='first_name') Nama Depan
+        input#first_name.form-control(type='text', placeholder='Nama Depan', name='first_name')
+      .form-group
+        label(for='last_name') Nama Belakang
+        input#last_name.form-control(type='text', placeholder='Nama Belakang', name='last_name')
+      .form-group
+        label(for='formGroupExampleInput') Tempat Lahir
+        input#formGroupExampleInput.form-control(type='text', placeholder='Tempat Lahir')
+      .form-group
+        label(for='formGroupExampleInput2') Tanggal Lahir
+        input#formGroupExampleInput2.form-control(type='text', placeholder='Another input')
+      .form-group
+        label(for='domisili') Domisili
+        input#domisili.form-control(type='text', placeholder='Domisili', name='domisili')
+      .form-group
+        label(for='formGroupExampleInput2') Domisili (mahrom/wali/ortu)
+        input#formGroupExampleInput2.form-control(type='text', placeholder='Another input')
+      .form-group
+        label(for='formGroupExampleInput') Email
+        input#formGroupExampleInput.form-control(type='text', placeholder='Example input')
+      .form-group
+        label(for='formGroupExampleInput2') No Telpon/HP
+        input#formGroupExampleInput2.form-control(type='text', placeholder='Another input')     
+        
+      button.btn.btn-primary(type='submit') Submit   
+    
+
+
+
+  
+          

@@ -1,0 +1,99 @@
+extends layout-form
+
+block content
+  .bottom-main-container
+    form.form-example(action='', method='get')
+      .form-group
+        label(for='exampleFormControlSelect1') Bentuk Fisik
+        select#exampleFormControlSelect1.form-control
+          option Kurus
+          option Ideal
+          option Atletis
+          option Chubby
+          option Gemuk
+      .form-group      
+        label(for='exampleFormControlSelect2') Warna Kulit
+        select#exampleFormControlSelect1.form-control
+          option Putih
+          option Putih Kekuningan
+          option Putih kemerahan
+          option Coklat sawo matang
+          option Coklat kehitaman
+          option Gelap
+      .form-group      
+        label(for='exampleFormControlSelect2') Tipe rambut
+        select#exampleFormControlSelect1.form-control
+          option Lurus
+          option Ikal
+          option Keriting
+          option Keriting/Kribo   
+      .form-group      
+        label(for='exampleFormControlSelect2') Tinggi Badan
+        select#exampleFormControlSelect1.form-control
+          option kurang dari  145
+          option 146 - 150
+          option 151 - 155
+          option 156 - 160
+          option 161 - 165
+          option 166 - 170
+          option 171 - 175
+          option 176 - 180
+          option lebih dari 180
+      .form-group      
+        label(for='exampleFormControlSelect2') Berat Badan
+        select#exampleFormControlSelect1.form-control
+          option kurang dari 40
+          option 41 - 45
+          option 46 - 50
+          option 51 - 55
+          option 56 - 60
+          option 61 - 65
+          option 66 - 70
+          option 71 - 75
+          option 76 - 80
+          option 81 - 85
+          option 86 - 90
+          option lebih dari 90          
+      .form-group
+        .row
+          .col-sm-2 Merokok
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Ya
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Tidak                
+      .form-group
+        .row
+          .col-sm-2 Bertato
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Ya
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Tidak                
+      .form-group
+        .row
+          .col-sm-2 Cacat Fisik
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Ya
+          .col-sm-5
+            .form-check
+              input#gridCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='gridCheck1')
+                | Tidak
+    
+
+          
+          
