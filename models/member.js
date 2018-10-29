@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var MemberSchema = new Schema(
   {
-    first_name: {type: String, required: true, max: 100},
-    last_name: {type: String, required: true, max: 100},
+    //first_name: {type: String, required: true, max: 100},
+    //last_name: {type: String, required: true, max: 100},
     domisili: {type: String, required: true},
     domisili_mahrom: {type: String},
     umur: {type: Number},

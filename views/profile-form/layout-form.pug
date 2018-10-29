@@ -22,5 +22,9 @@ html(lang='en')
             | PROFIL
         .top-main-container-item.top-main-container-item-right simpan
       br
-      br        
+      br
+      != messages('message', 'locals')
+      if errors
+        each errors, i in errors
+          div(class="alert alert-danger") #{error.msg}
       block content

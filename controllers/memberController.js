@@ -1,4 +1,6 @@
 var Member = require('../models/member');
+const express = require('express');
+const router = express.Router();
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 var async = require('async');
@@ -63,8 +65,29 @@ exports.member_create_get = function(req, res, next) {
 
 
 // Handle book create on POST.
+exports.member_create_post = function(req, res) {
+  const domisili = req.body.domisili;
+  const domisili_mahrom = req.body.domisili_mahrom;
 
-  exports.member_create_post = [
+  req.checkBody('domisili', 'domisili is required').notEmpty();
+  req.checkBody('domisili_mahrom', 'domisili mahrom is required').notEmpty();
+}
+
+  let errors = req.validationErrors();
+  if(errors) {
+    res.render('profile-form/data-diri', {
+      errors:errors
+    });
+  } else {
+    let newMember = new Member({
+      domisili:domisili,
+      domisili_mahrom:domisili_mahrom
+    });
+  }
+
+
+/*
+exports.member_create_post = [
 // Convert the genre to an array.
 
 
@@ -112,7 +135,7 @@ exports.member_create_get = function(req, res, next) {
         }
     ];
 
-
+*/
 // Display Member update form on GET.
     exports.member_update_get = function (req, res, next) {
 
