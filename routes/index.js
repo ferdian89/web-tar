@@ -3,9 +3,7 @@ var router = express.Router();
 var member_controller = require('../controllers/memberController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', member_controller.member_list_limit);
 
 /* Get Full Profile */
 router.get('/myprofile', function(req, res, next) {
@@ -13,7 +11,7 @@ router.get('/myprofile', function(req, res, next) {
 });
 
 
-router.get('/profile', function(req, res, next) {
+router.get('/member/dashboard', function(req, res, next) {
   res.render('profile-form/profile', { title: 'Express' });
 });
 

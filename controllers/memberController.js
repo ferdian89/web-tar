@@ -18,7 +18,17 @@ exports.member_list = function (req, res, next) {
 
 };
 
+exports.member_list_limit = function (req, res, next) {
 
+    Member.find()
+        .sort([['last_name', 'ascending']])
+        .exec(function (err, list_members) {
+            if (err) { return next(err); }
+            // Successful, so render.
+            res.render('index',  { member_list: list_members });
+        })
+
+};
 
 // Display detail page for a specific Member.
 exports.member_detail = function (req, res, next) {
