@@ -6,6 +6,12 @@ var MemberSchema = new Schema(
     first_name: {type: String, required: true, max: 100},
     last_name: {type: String, required: true, max: 100},
     domisili: {type: String, required: true},
+    domisili_mahrom: {type: String},
+    umur: {type: Number},
+    status: {type: String},
+    pendidikan: [{
+      "jenjang": String
+    }]
   }
 );
 
@@ -20,7 +26,7 @@ MemberSchema
 MemberSchema
 .virtual('url')
 .get(function () {
-  return '/member/'+this._id;
+  return '/member'+this._id;
 });
 
 //Export model

@@ -72,6 +72,7 @@ exports.member_create_get = function(req, res, next) {
   body('first_name', 'domisili must not be empty.').isLength({ min: 1 }).trim(),
   body('last_name', 'domisili must not be empty.').isLength({ min: 1 }).trim(),
   body('domisili', 'domisili must not be empty.').isLength({ min: 1 }).trim(),
+  body('domisili_mahrom', 'domisili must not be empty.').isLength({ min: 1 }).trim(),
 
 
   // Sanitize fields (using wildcard).
@@ -89,7 +90,8 @@ exports.member_create_get = function(req, res, next) {
               {
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
-                domisili: req.body.domisili
+                domisili: req.body.domisili,
+                domisili_mahrom: req.body.domisili_mahrom
                });
 
           if (!errors.isEmpty()) {
