@@ -26,7 +26,7 @@ MemberSchema
 MemberSchema
 .virtual('url')
 .get(function () {
-  return '/member'+this._id;
+  return '/member/'+this._id;
 });
 
 //Export model

@@ -2,16 +2,39 @@ extends layout
 
 block content
 
-  h1 Author: #{member.name}
+  h4 Data diri
+    h5 Nama : #{member.name}
+    h5 Tempat/Tanggal lahir :
+    h5 Domisili Sekarang : #{member.domisili}
+    h5 Domisili (mahrom/wali/ortu) : #{member.domisili_mahrom}
+    h5 Suku :
+  h4 Gambaran Fisik
+  p saya berbadan standar tinggi sekitar 166-170 dan berat sekitar51 - 55 berwarna kulit putih kekuningan dengan tipe rambut ikal.saya tidak pernah merokok dan tidak bertato. saya alhamdulillahtidak ada riwayat penyakit serius.
+  h4 Pengalaman Kerja
+  h4 Pendidikan
+  h4 Prestasi/Penghargaan
+  h4 Organisasi
+  h4 Keluarga
+  h4 Ibadah
+  h4 Harapan
+    h5 Sumber dana acara pernikahan
+      p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
+    h5 Gambaran acara pernikahan
+      p Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus i
+    h5 Domisili setelah berkeluarga
+      p Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus i
+    h5 Karir ke depan
+      p Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus i
+    h5 Keturunan dan Pendidikan anak
+      p quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic
+    h5 Pengelolaan keuangan rumah tangga
+      p quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
+    h5 Peningkatan ilmu agama
+      p quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
+    h5 Target jangka pendek
+      p et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudian
+    h5 Memperbolehkan istri bekerja
+      p et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudian
 
-  
-  div(style='margin-left:20px;margin-top:20px')
-
-    h4 Books : #{member.domisili}
-
-      
-  hr
-  p
-    a(href=author.url+'/delete') Delete author
-  p
-    a(href=member.url+'/update') Update author
+    hr
+    a(href= member.url+'/update') Update Data

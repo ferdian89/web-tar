@@ -47,7 +47,7 @@ exports.member_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render.
-        res.render('member_detail', { title: 'Member Detail', member: results.member, member_books: results.members_books });
+        res.render('member-detail', { title: 'Member Detail', member: results.member, member_books: results.members_books });
     });
 
 };
@@ -116,15 +116,15 @@ exports.member_create_get = function(req, res, next) {
 // Display Member update form on GET.
     exports.member_update_get = function (req, res, next) {
 
-        Member.findById(req.params.id, function (err, member) {
+        Member.findById(req.params.id, function (err, results) {
             if (err) { return next(err); }
-            if (member == null) { // No results.
+            if (results.member == null) { // No results.
                 var err = new Error('Member not found');
                 err.status = 404;
                 return next(err);
             }
             // Success.
-            res.render('profile-form/data-diri', { title: 'Update Member', member: member });
+            res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
 
         });
     };
@@ -167,10 +167,10 @@ exports.member_create_get = function(req, res, next) {
             }
             else {
                 // Data from form is valid. Update the record.
-                Member.findByIdAndUpdate(req.params.id, member, {}, function (err, themember) {
+                Member.findByIdAndUpdate(req.params.id, member, {}, function (err, member) {
                     if (err) { return next(err); }
                     // Successful - redirect to genre detail page.
-                    res.redirect(themember.url);
+                    res.redirect(member.url);
                 });
             }
         }
