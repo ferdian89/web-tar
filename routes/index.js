@@ -44,9 +44,9 @@ router.get('/members/', member_controller.member_list);
 
 
 
-router.get('/member/pendidikan', member_controller.member_create_get_pend);
-router.post('/member/pendidikan', member_controller.member_create_post_pend);
-
+router.get('/profile/pengalaman', function(req, res, next) {
+  res.render('profile-form/pengalaman', { title: 'Express' });
+});
 
 router.get('/profile/pendidikan', function(req, res, next) {
   res.render('profile-form/pendidikan', { title: 'Express' });

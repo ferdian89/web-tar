@@ -3,13 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var passport = require('passport');
 var bodyParser = require('body-parser');
-const validator = require('express-validator')
+
 var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
-
-
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -23,18 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(validator());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/user', authRouter);
+app.use('/users', usersRouter);
 
 //database
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/website-taaruf2", { useNewUrlParser: true });
-require('./config/passport');
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -106,7 +106,7 @@ exports.member_create_get = function(req, res, next) {
               member.save(function (err) {
                   if (err) { return next(err); }
                      //successful - redirect to new book record.
-                     res.redirect(member.url);
+                     res.redirect('member.url');
                   });
           }
         }
@@ -175,37 +175,3 @@ exports.member_create_get = function(req, res, next) {
             }
         }
     ];
-
-exports.member_create_get_pend = function(req, res, next) {
-  Member.findById(req.params.id)
-  res.render('profile-form/pendidikan')
-}
-
-
-exports.member_create_post_pend = (req, res, next) => {
-
-          // Extract the validation errors from a request.
-          const errors = validationResult(req);
-
-          // Create a Book object with escaped and trimmed data.
-          var member = new Member(
-            {
-              pendidikan: req.body.pendidikan
-             });
-
-        if (!errors.isEmpty()) {
-            // There are errors. Render the form again with sanitized values/error messages.
-            res.render('profile-form/pendidikan');
-        return;
-        }
-        else {
-            // Data from form is valid.
-            // Check if Genre with same name already exists.
-            // Data from form is valid. Save book.
-            member.save(function (err) {
-                if (err) { return next(err); }
-                   //successful - redirect to new book record.
-                   res.redirect(member.url);
-                });
-        }
-      }
