@@ -9,11 +9,8 @@ var MemberSchema = new Schema(
     domisili_mahrom: {type: String},
     umur: {type: Number},
     status: {type: String},
-    pendidikan: [{
-      "jenjang": String
-    }]
-  }
-);
+    pendidikan: {type: String}
+});
 
 // Virtual for member "full" name.
 MemberSchema
