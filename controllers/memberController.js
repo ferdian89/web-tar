@@ -13,7 +13,7 @@ exports.member_list = function (req, res, next) {
         .exec(function (err, list_members) {
             if (err) { return next(err); }
             // Successful, so render.
-            res.render('member-list',  { member_list: list_members });
+            res.render('dashboard',  { member_list: list_members });
         })
 
 };
@@ -47,7 +47,7 @@ exports.member_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render.
-        res.render('member-detail', { title: 'Member Detail', member: results.member, member_books: results.members_books });
+        res.render('member-profile', { title: 'Member Detail', member: results.member, member_books: results.members_books });
     });
 
 };
@@ -88,6 +88,7 @@ exports.member_create_get = function(req, res, next) {
             // Create a Book object with escaped and trimmed data.
             var member = new Member(
               {
+                user: req.user,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 domisili: req.body.domisili,

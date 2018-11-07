@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const passport = require('passport');
+
 var member_controller = require('../controllers/memberController');
+
 
 /* GET home page. */
 router.get('/', member_controller.member_list_limit);
@@ -11,7 +14,7 @@ router.get('/myprofile', function(req, res, next) {
 });
 
 
-router.get('/member/dashboard', function(req, res, next) {
+router.get('/member/myprofile', function(req, res, next) {
   res.render('profile-form/profile', { title: 'Express' });
 });
 
@@ -23,16 +26,16 @@ router.get('/member/data', member_controller.member_create_get);
 router.post('/member/data', member_controller.member_create_post);
 
 // GET request to update member.
-router.get('/member/:id/update', member_controller.member_update_get);
+router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
 
 // POST request to update member.
-router.post('/member/:id/update', member_controller.member_update_post);
+router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
 
 // GET request for one member.
-router.get('/member/:id/', member_controller.member_detail);
+router.get('/member/:id/', isLoggedIn, member_controller.member_detail);
 
 // GET request for list of all Members.
-router.get('/members/', member_controller.member_list);
+router.get('/member/dashboard', isLoggedIn, member_controller.member_list);
 
 
 
@@ -78,9 +81,13 @@ router.get('/profile/harapan', function(req, res, next) {
 
 
 
-
-
-
-
-
 module.exports = router;
+
+
+
+function isLoggedIn(req, res, next) {
+  if(req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}

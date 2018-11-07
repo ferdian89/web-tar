@@ -27,14 +27,14 @@ passport.use('local.signup', new LocalStrategy ({
     errors.forEach(function(error) {
       messages.push(error.msg);
     });
-    return done(null, false);
+    return done(null, false, req.flash('error', messages));
   }
   User.findOne({'email': email}, function(err, user) {
     if(err) {
       return done(err);
     }
     if(user) {
-      return done(null, false)
+      return done(null, false, {message:'email is already use.'})
     }
     var newUser = new User();
     newUser.email = email;
@@ -63,17 +63,17 @@ passport.use('local.signin', new LocalStrategy({
     errors.forEach(function(error) {
       messages.push(error.msg);
     });
-    return done(null, false, req.flash('error', messages));
+    return done(null, false);
   }
   User.findOne({'email': email}, function(err, user) {
     if(err) {
       return done(err);
     }
     if(!user) {
-      return done(null, false, {message:'user not found'})
+      return done(null, false)
     }
     if(!user.validPassword(password)) {
-      return done(null, false, {message:'wrong password'})
+      return done(null, false)
     }
     return done(null, user);
   });

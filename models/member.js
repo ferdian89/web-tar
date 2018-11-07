@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var MemberSchema = new Schema(
   {
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
     first_name: {type: String, required: true, max: 100},
     last_name: {type: String, required: true, max: 100},
     domisili: {type: String, required: true},
