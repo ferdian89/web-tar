@@ -184,10 +184,6 @@ exports.member_create_get_pend = function(req, res, next) {
 
 
 exports.member_create_post_pend = (req, res, next) => {
-
-          // Extract the validation errors from a request.
-          const errors = validationResult(req);
-
           // Create a Book object with escaped and trimmed data.
           var member = new Member(
             {
@@ -200,9 +196,6 @@ exports.member_create_post_pend = (req, res, next) => {
         return;
         }
         else {
-            // Data from form is valid.
-            // Check if Genre with same name already exists.
-            // Data from form is valid. Save book.
             member.save(function (err) {
                 if (err) { return next(err); }
                    //successful - redirect to new book record.

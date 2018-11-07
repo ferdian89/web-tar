@@ -20,7 +20,7 @@ passport.use('local.signup', new LocalStrategy ({
 }, function(req, email, password, done) {
   req.checkBody('email', 'Invalid Email').notEmpty().isEmail();
   req.checkBody('password', 'Invalid Password').notEmpty();
-  req.checkBody('password', "Password's length at least 5").isLength({min:4});
+  req.checkBody('password', "Password's length at least 4").isLength({min:3});
   var errors = req.validationErrors();
   if (errors) {
     var messages = [];
@@ -63,17 +63,17 @@ passport.use('local.signin', new LocalStrategy({
     errors.forEach(function(error) {
       messages.push(error.msg);
     });
-    return done(null, false);
+    return done(null, false, req.flash('error', messages));
   }
   User.findOne({'email': email}, function(err, user) {
     if(err) {
       return done(err);
     }
     if(!user) {
-      return done(null, false)
+      return done(null, false, {message: 'User not found'})
     }
     if(!user.validPassword(password)) {
-      return done(null, false)
+      return done(null, false, {message: 'wrong password'})
     }
     return done(null, user);
   });

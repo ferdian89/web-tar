@@ -12,4 +12,9 @@ router.post('/signup', auth_controller.signup_post);
 router.get('/signin', auth_controller.signin_get);
 router.post('/signin', auth_controller.signin_post);
 
+router.get('/logout', function(req, res, next) {
+  req.logout();
+  res.redirect('/');
+});
+
 module.exports = router;

@@ -8,76 +8,35 @@ var member_controller = require('../controllers/memberController');
 /* GET home page. */
 router.get('/', member_controller.member_list_limit);
 
-/* Get Full Profile */
+// Get list link of forms
 router.get('/myprofile', function(req, res, next) {
   res.render('full-profile');
 });
 
-
 router.get('/member/myprofile', function(req, res, next) {
-  res.render('profile-form/profile', { title: 'Express' });
+  res.render('profile-form/profile');
 });
 
-
-// GET request to create member.
-router.get('/member/data', member_controller.member_create_get);
-
-// POST request to create member.
-router.post('/member/data', member_controller.member_create_post);
-
-// GET request to update member.
-router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
-
-// POST request to update member.
-router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
-
-// GET request for one member.
+// Get detail data member
 router.get('/member/:id/', isLoggedIn, member_controller.member_detail);
 
 // GET request for list of all Members.
 router.get('/member/dashboard', isLoggedIn, member_controller.member_list);
 
+// create and update of Main data
+router.get('/member/data', isLoggedIn, member_controller.member_create_get);
+router.post('/member/data', isLoggedIn, member_controller.member_create_post);
+router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
+router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
 
 
+// create and update of pendidikan data
+router.get('/member/pendidikan', isLoggedIn, member_controller.member_create_get_pend);
+router.post('/member/pendidikan', isLoggedIn, member_controller.member_create_post_pend);
+router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
+router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
 
 
-
-
-
-
-
-
-router.get('/member/pendidikan', member_controller.member_create_get_pend);
-router.post('/member/pendidikan', member_controller.member_create_post_pend);
-
-
-router.get('/profile/pendidikan', function(req, res, next) {
-  res.render('profile-form/pendidikan', { title: 'Express' });
-});
-
-router.get('/profile/ibadah', function(req, res, next) {
-  res.render('profile-form/ibadah', { title: 'Express' });
-});
-
-router.get('/profile/prestasi', function(req, res, next) {
-  res.render('profile-form/prestasi', { title: 'Express' });
-});
-
-router.get('/profile/Organisasi', function(req, res, next) {
-  res.render('profile-form/Organisasi', { title: 'Express' });
-});
-
-router.get('/profile/keluarga', function(req, res, next) {
-  res.render('profile-form/keluarga', { title: 'Express' });
-});
-
-router.get('/profile/fisik', function(req, res, next) {
-  res.render('profile-form/gambaran-fisik', { title: 'Express' });
-});
-
-router.get('/profile/harapan', function(req, res, next) {
-  res.render('profile-form/harapan', { title: 'Express' });
-});
 
 
 

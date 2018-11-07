@@ -7,7 +7,7 @@ block content
       if hasErrors
           each message in messages
             div(class="alert alert-danger")
-              p= messages.this
+              p #{messages.this}
     form(action='/user/signup', method='post')
       .form-group
         label(for='email') E-mail
