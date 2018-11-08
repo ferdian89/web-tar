@@ -1,7 +1,9 @@
 var Member = require('../models/member');
+var Pend = require('../models/member');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 var async = require('async');
+
 
 
 
@@ -178,18 +180,18 @@ exports.member_create_get = function(req, res, next) {
     ];
 
 exports.member_create_get_pend = function(req, res, next) {
-  Member.findById(req.params.id)
+  //Member.findById(req.params.id)
   res.render('profile-form/pendidikan')
 }
 
-
+/*
 exports.member_create_post_pend = (req, res, next) => {
 
           // Extract the validation errors from a request.
           const errors = validationResult(req);
 
           // Create a Book object with escaped and trimmed data.
-          var member = new Member(
+          var pend = new Pend(
             {
               pendidikan: req.body.pendidikan
              });
@@ -203,10 +205,11 @@ exports.member_create_post_pend = (req, res, next) => {
             // Data from form is valid.
             // Check if Genre with same name already exists.
             // Data from form is valid. Save book.
-            member.save(function (err) {
+            pend.save(function (err) {
                 if (err) { return next(err); }
                    //successful - redirect to new book record.
-                   res.redirect(member.url);
+                   res.redirect('/');
                 });
         }
       }
+*/

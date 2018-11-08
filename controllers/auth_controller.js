@@ -15,7 +15,7 @@ exports.signup_get = (req, res, next) => {
     res.render('authentication/signup', { messages: messages, hasErrors: messages.length > 0});
 }
 exports.signup_post = passport.authenticate('local.signup', {
-  successRedirect: '/member/data',
+  successRedirect: '/user/signin',
   failureRedirect: '/user/signup',
   failureFlash: true
 });
@@ -26,7 +26,7 @@ exports.signin_get = (req, res, next) => {
     res.render('authentication/signin', { messages: messages, hasErrors: messages.length > 0});
 }
 exports.signin_post = passport.authenticate('local.signin', {
-  successRedirect: '/member/data',
+  successRedirect: '/member/myprofile',
   failureRedirect: '/user/signin',
   failureFlash: true
 });

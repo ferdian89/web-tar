@@ -14,16 +14,16 @@ router.get('/myprofile', function(req, res, next) {
 });
 
 
-router.get('/member/myprofile', function(req, res, next) {
+router.get('/member/myprofile', isLoggedIn, function(req, res, next) {
   res.render('profile-form/profile', { title: 'Express' });
 });
 
 
 // GET request to create member.
-router.get('/member/data', member_controller.member_create_get);
+router.get('/member/data', isLoggedIn, member_controller.member_create_get);
 
 // POST request to create member.
-router.post('/member/data', member_controller.member_create_post);
+router.post('/member/data', isLoggedIn, member_controller.member_create_post);
 
 // GET request to update member.
 router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
@@ -47,8 +47,8 @@ router.get('/member/dashboard', isLoggedIn, member_controller.member_list);
 
 
 
-router.get('/member/pendidikan', member_controller.member_create_get_pend);
-router.post('/member/pendidikan', member_controller.member_create_post_pend);
+//router.get('/profile/pendidikan', member_controller.member_create_get_pend);
+//router.post('/profile/pendidikan', member_controller.member_create_post_pend);
 
 
 router.get('/profile/pendidikan', function(req, res, next) {

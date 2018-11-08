@@ -11,7 +11,9 @@ var MemberSchema = new Schema(
     umur: {type: Number},
     status: {type: String},
     pendidikan: {type: String}
+
 });
+
 
 // Virtual for member "full" name.
 MemberSchema
@@ -29,3 +31,4 @@ MemberSchema
 
 //Export model
 module.exports = mongoose.model('Member', MemberSchema);
+//module.exports = mongoose.model('Pend', PendSchema);
