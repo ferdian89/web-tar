@@ -2,12 +2,12 @@ var Member = require('../models/member');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 var async = require('async');
+const User = require('../models/user');
 
 
 
 // Display list of all member.
 exports.member_list = function (req, res, next) {
-
     Member.find()
         .sort([['last_name', 'ascending']])
         .exec(function (err, list_members) {
@@ -15,11 +15,9 @@ exports.member_list = function (req, res, next) {
             // Successful, so render.
             res.render('dashboard',  { member_list: list_members });
         })
-
 };
 
 exports.member_list_limit = function (req, res, next) {
-
     Member.find()
         .sort([['last_name', 'ascending']])
         .exec(function (err, list_members) {
@@ -27,18 +25,15 @@ exports.member_list_limit = function (req, res, next) {
             // Successful, so render.
             res.render('index',  { member_list: list_members });
         })
-
 };
 
 // Display detail page for a specific Member.
 exports.member_detail = function (req, res, next) {
-
     async.parallel({
         member: function (callback) {
             Member.findById(req.params.id)
                 .exec(callback)
         },
-
     }, function (err, results) {
         if (err) { return next(err); } // Error in API usage.
         if (results.member == null) { // No results.
@@ -49,17 +44,19 @@ exports.member_detail = function (req, res, next) {
         // Successful, so render.
         res.render('member-profile', { title: 'Member Detail', member: results.member, member_books: results.members_books });
     });
-
 };
-
-
 
 
 // Display member create form on GET.
 
-exports.member_create_get = function(req, res, next) {
-  res.render('profile-form/data-diri')
-}
+
+exports.member_create_get = function (req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/user/signin');
+    }
+    var member = new (req.session.user);
+    res.render('profile-form/data-diri');
+  };
 
 
 // Handle book create on POST.

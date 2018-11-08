@@ -2,7 +2,7 @@ extends layout-form
 
 block content
   .bottom-main-container
-    form.form-example(action='', method='get')
+    form.form-example(action='/member/gambaran-fisik', method='POST')
       .form-group
         label(for='exampleFormControlSelect1') Bentuk Fisik
         select#exampleFormControlSelect1.form-control
@@ -11,7 +11,7 @@ block content
           option Atletis
           option Chubby
           option Gemuk
-      .form-group      
+      .form-group
         label(for='exampleFormControlSelect2') Warna Kulit
         select#exampleFormControlSelect1.form-control
           option Putih
@@ -20,14 +20,14 @@ block content
           option Coklat sawo matang
           option Coklat kehitaman
           option Gelap
-      .form-group      
+      .form-group
         label(for='exampleFormControlSelect2') Tipe rambut
         select#exampleFormControlSelect1.form-control
           option Lurus
           option Ikal
           option Keriting
-          option Keriting/Kribo   
-      .form-group      
+          option Keriting/Kribo
+      .form-group
         label(for='exampleFormControlSelect2') Tinggi Badan
         select#exampleFormControlSelect1.form-control
           option kurang dari  145
@@ -39,7 +39,7 @@ block content
           option 171 - 175
           option 176 - 180
           option lebih dari 180
-      .form-group      
+      .form-group
         label(for='exampleFormControlSelect2') Berat Badan
         select#exampleFormControlSelect1.form-control
           option kurang dari 40
@@ -53,7 +53,7 @@ block content
           option 76 - 80
           option 81 - 85
           option 86 - 90
-          option lebih dari 90          
+          option lebih dari 90
       .form-group
         .row
           .col-sm-2 Merokok
@@ -66,7 +66,7 @@ block content
             .form-check
               input#gridCheck1.form-check-input(type='checkbox')
               label.form-check-label(for='gridCheck1')
-                | Tidak                
+                | Tidak
       .form-group
         .row
           .col-sm-2 Bertato
@@ -79,7 +79,7 @@ block content
             .form-check
               input#gridCheck1.form-check-input(type='checkbox')
               label.form-check-label(for='gridCheck1')
-                | Tidak                
+                | Tidak
       .form-group
         .row
           .col-sm-2 Cacat Fisik
@@ -93,7 +93,3 @@ block content
               input#gridCheck1.form-check-input(type='checkbox')
               label.form-check-label(for='gridCheck1')
                 | Tidak
-    
-
-          
-          

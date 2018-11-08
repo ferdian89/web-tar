@@ -2,7 +2,7 @@ extends layout-form
 
 block content
   .bottom-main-container
-    form.form-example(action='', method='get')
+    form.form-example(action='/member/pendidikan', method='POST')
       .form-group
         label(for='formGroupExampleInput') Institusi/Universitas
         input#formGroupExampleInput.form-control(type='text', placeholder='Nama Depan', name: 'pendidikan')

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+var Member = require('../models/member');
 
 var member_controller = require('../controllers/memberController');
 
@@ -13,7 +14,8 @@ router.get('/myprofile', function(req, res, next) {
   res.render('full-profile');
 });
 
-router.get('/member/myprofile', function(req, res, next) {
+router.get('/member/myprofile', isLoggedIn, function(req, res, next) {
+  //var member = new Member(req.session.member);
   res.render('profile-form/profile');
 });
 
@@ -31,8 +33,8 @@ router.post('/member/:id/update', isLoggedIn, member_controller.member_update_po
 
 
 // create and update of pendidikan data
-router.get('/member/pendidikan', isLoggedIn, member_controller.member_create_get_pend);
-router.post('/member/pendidikan', isLoggedIn, member_controller.member_create_post_pend);
+router.get('/member/:id/pendidikan', isLoggedIn, member_controller.member_create_get_pend);
+router.post('/member/:id/ pendidikan', isLoggedIn, member_controller.member_create_post_pend);
 router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
 router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
 
