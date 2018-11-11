@@ -14,7 +14,12 @@ router.get('/myprofile', function(req, res, next) {
 });
 
 
-router.get('/member/myprofile', isLoggedIn, function(req, res, next) {
+router.get('/member/dashboard', isLoggedIn, function(req, res, next) {
+  res.render('dashboard', { title: 'Express' });
+});
+
+
+router.get('/member/dashboard/form', isLoggedIn, function(req, res, next) {
   res.render('profile-form/profile', { title: 'Express' });
 });
 

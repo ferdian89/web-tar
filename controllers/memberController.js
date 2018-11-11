@@ -173,7 +173,7 @@ exports.member_create_get = function(req, res, next) {
                 Member.findByIdAndUpdate(req.params.id, member, {}, function (err, member) {
                     if (err) { return next(err); }
                     // Successful - redirect to genre detail page.
-                    res.redirect(member.url);
+                    res.redirect('/member/myprofile');
                 });
             }
         }
