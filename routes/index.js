@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+var Member = require('../models/member');
 
 var member_controller = require('../controllers/memberController');
 
@@ -14,8 +15,16 @@ router.get('/myprofile', function(req, res, next) {
 });
 
 
-router.get('/member/dashboard', isLoggedIn, function(req, res, next) {
-  res.render('dashboard', { title: 'Express' });
+router.get('/member/dashboard', isLoggedIn, function (req, res, next) {
+
+    Member.find()
+        .sort([['last_name', 'ascending']])
+        .exec(function (err, list_members) {
+            if (err) { return next(err); }
+            // Successful, so render.
+            res.render('dashboard',  { member_list: list_members });
+        });
+
 });
 
 

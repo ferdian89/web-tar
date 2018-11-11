@@ -15,7 +15,7 @@ exports.member_list = function (req, res, next) {
         .exec(function (err, list_members) {
             if (err) { return next(err); }
             // Successful, so render.
-            res.render('dashboard',  { member_list: list_members });
+            res.render('member_list',  { member_list: list_members });
         })
 
 };
