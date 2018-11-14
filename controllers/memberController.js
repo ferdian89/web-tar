@@ -22,9 +22,8 @@ exports.member_list = function (req, res, next) {
 
 exports.member_list_limit = function (req, res, next) {
 
-    Member.find()
-        .sort([['last_name', 'ascending']])
-        .exec(function (err, list_members) {
+    Member.find().sort([['last_name', 'ascending']])
+    .exec(function (err, list_members) {
             if (err) { return next(err); }
             // Successful, so render.
             res.render('index',  { member_list: list_members });
@@ -117,20 +116,18 @@ exports.member_create_get = function(req, res, next) {
 
 
 // Display Member update form on GET.
-    exports.member_update_get = function (req, res, next) {
-
-        Member.findById(req.params.id, function (err, results) {
-            if (err) { return next(err); }
-            if (results.member == null) { // No results.
-                var err = new Error('Member not found');
-                err.status = 404;
-                return next(err);
-            }
-            // Success.
-            res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
-
-        });
-    };
+exports.member_update_get = function (req, res, next) {
+    Member.findById(req.params.id, function (err, results) {
+        if (err) { return next(err); }
+        if (results.member == null) { // No results.
+            var err = new Error('Member not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+        res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
+    });
+};
 
 
 // Handle Member update on POST.

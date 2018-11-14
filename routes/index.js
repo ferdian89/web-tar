@@ -3,15 +3,21 @@ var router = express.Router();
 const passport = require('passport');
 
 var member_controller = require('../controllers/memberController');
-
+var Member = require('../models/member');
 
 /* GET home page. */
 router.get('/', member_controller.member_list_limit);
 
 /* Get Full Profile */
-router.get('/myprofile', function(req, res, next) {
-  res.render('full-profile');
+router.get('/member/myprofile', isLoggedIn, function(req, res, next) {
+  Member.find({user: req.user})
+  .exec(function (err, list_members) {
+          if (err) { return next(err); }
+          // Successful, so render.
+          res.render('member-profile',  { member_list: list_members });
+      })
 });
+
 
 
 router.get('/member/dashboard', isLoggedIn, function(req, res, next) {

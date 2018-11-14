@@ -7,11 +7,13 @@ var MemberSchema = new Schema(
     first_name: {type: String, required: true, max: 100},
     last_name: {type: String, required: true, max: 100},
     domisili: {type: String, required: true},
-    domisili_mahrom: {type: String},
-    umur: {type: Number},
-    status: {type: String},
-    pendidikan: {type: String}
-
+    domisili_mahrom: {type: String, required: true}
+    /*
+    tempat_lahir: {type: String, required: true},
+    tanggal_lahir: {type: Date, required: true},
+    email: {type: String, required: true},
+    telepon: {type: String, required: true}
+*/
 });
 
 
