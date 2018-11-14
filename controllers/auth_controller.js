@@ -29,7 +29,11 @@ exports.signin_get = (req, res, next) => {
     res.render('authentication/signin', { messages: messages, hasErrors: messages.length > 0});
 }
 exports.signin_post = passport.authenticate('local.signin', {
+<<<<<<< HEAD
   successRedirect: '/member/myprofile',
+=======
+  successRedirect: '/member/dashboard',
+>>>>>>> trial-8
   failureRedirect: '/user/signin',
   failureFlash: true
 });

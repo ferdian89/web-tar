@@ -1,99 +1,28 @@
-extends layout
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Album example for Bootstrap
+    // Bootstrap core CSS
+    link(href='../../stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='../../stylesheets/style.css', rel='stylesheet')
+    // Custom styles for this template
+    link(href='stylesheets/album.css', rel='stylesheet')
+  body
+    .text-center
+    .list-group.font-form
+      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/form')
+        | Form
+      a.list-group-item.list-group-item-action(href= '/member/myprofile')
+        | My Profile
+      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/cari-pasangan')
+        | Calon Pasangan Taaruf
+      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/request-taaruf')
+        | Request Taaruf
 
-block content
-  header
-  #navbarHeader.collapse.bg-dark
-    .container
-      .row
-        .col-sm-8.col-md-7.py-4
-          h4.text-white About
-          p.text-muted
-            | Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.
-        .col-sm-4.offset-md-1.py-4
-          h4.text-white Contact
-          ul.list-unstyled
-            li
-              a.text-white(href='#') Follow on Twitter
-            li
-              a.text-white(href='#') Like on Facebook
-            li
-              a.text-white(href='#') Email me
-  .navbar.navbar-dark.bg-dark.box-shadow
-    .container.d-flex.justify-content-between
-      a.navbar-brand.d-flex.align-items-center(href='#')
-        svg.mr-2(xmlns='http://www.w3.org/2000/svg', width='20', height='20', viewBox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
-          path(d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z')
-          circle(cx='12', cy='13', r='4')
-        strong Album
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarHeader', aria-controls='navbarHeader', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-  main(role='main')
-  section.jumbotron.text-center
-    .container
-      h1.jumbotron-heading Album example
-      p.lead.text-muted
-        | Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.
-      p
-        a.btn.btn-primary.my-2(href='localhost:3000/member/dashboard') My Profile
-        a.btn.btn-secondary.my-2(href='#') request taaruf
-        a.btn.btn-primary.my-2(href='#') Q and A
-        a.btn.btn-secondary.my-2(href='#') Secondary action
-  .album.py-5.bg-light
-    .container
-      .row
-        each member in member_list
-          .col-md-4
-            .card.mb-4.box-shadow
-              .card-body
-                .summary
-                  .summary-item 27 years old
-                  .summary-item Domisili : 
-                  .summary-item Domisili (wali/mahrom/ortu) : jakarta
-                  .summary-item Status: Janda
-                  .summary-item Suku: Jawa
-                  .summary-item Pendidikan: S1
-                  .summary-item Pekerjaan: Karyawan swasta
-                  .summary-item Bentuk badan: Normal (170/67)
-                  .summary-item Warna Kulit: Putih
-                  .summary-item Rambut: Lurus
-              .card-body
-                #headingOne
-                  h5.mb-0
-                    button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
-                #collapseOne.collapse(aria-labelledby='headingOne', data-parent='#accordionExample')
-                  .summary
-                    .summary-item Anak ke: 1 dari 4
-                    .summary-item Jumlah anak: 1 umur 5 tahun
-                    .summary-item Merokok: tidak
-                    .summary-item Bertato: tidak
-                    .summary-item Cacat Fisik: tidak
-                    .summary-item Riwayat Penyakit: tidak
-                    .summary-item Target menikah: tahun 2019
-                    .summary-item
-                      span.miring Sholat wajib :
-                      | selalu dikerjaan, dominan berjamaah
-                    .summary-item
-                      span.miring Bacaan Aqluran :
-                      |  lancar sesuai tajwid
-                    .summary-item
-                      span.miring Hafalan Alquran :
-                      |  surat2 pendek di juz amma
-                    .summary-item
-                      span.miring Kajian yang diikuti :
-                      |  kajian blok M, kajian Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid,Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid,Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid
-                    .summary-item
-                      span.miring Kegiatan diwaktu luang :
-                      |  menonton, belajar hal hal baru, ikut kajian, jalan2, kumpul bareng2 teman.
-
-                    .summary-item
-                      span.miring Hal yang disukai :
-                      |  membaca, nonton film dokumenter, mecoba hal hal baru
-                    .summary-item
-                      span.miring Hal yang kurang disukai
-                      |  pergi ke mall, mengantri dalam waktu lama, hal yang monoton
-                .d-flex.justify-content-between.align-items-center
-                  .btn-group
-                  #accordionExample.accordion
-                    button.btn.btn-sm.btn-outline-secondary(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne') View
-                    button.btn.btn-sm.btn-outline-secondary(type='button') Edit
-                  small.text-muted 9 mins
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script.window.jQuery || document.write('<script src="JavaScripts/jquery-slim.min.js"><\\/script>')
+    script(src='../../JavaScripts/bootstrap.min.js')

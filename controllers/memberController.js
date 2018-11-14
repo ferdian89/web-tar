@@ -1,7 +1,9 @@
 var Member = require('../models/member');
+var Pend = require('../models/member');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 var async = require('async');
+
 
 
 
@@ -20,9 +22,8 @@ exports.member_list = function (req, res, next) {
 
 exports.member_list_limit = function (req, res, next) {
 
-    Member.find()
-        .sort([['last_name', 'ascending']])
-        .exec(function (err, list_members) {
+    Member.find().sort([['last_name', 'ascending']])
+    .exec(function (err, list_members) {
             if (err) { return next(err); }
             // Successful, so render.
             res.render('index',  { member_list: list_members });
@@ -115,20 +116,18 @@ exports.member_create_get = function(req, res, next) {
 
 
 // Display Member update form on GET.
-    exports.member_update_get = function (req, res, next) {
-
-        Member.findById(req.params.id, function (err, results) {
-            if (err) { return next(err); }
-            if (results.member == null) { // No results.
-                var err = new Error('Member not found');
-                err.status = 404;
-                return next(err);
-            }
-            // Success.
-            res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
-
-        });
-    };
+exports.member_update_get = function (req, res, next) {
+    Member.findById(req.params.id, function (err, results) {
+        if (err) { return next(err); }
+        if (results.member == null) { // No results.
+            var err = new Error('Member not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Success.
+        res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
+    });
+};
 
 
 // Handle Member update on POST.
@@ -171,21 +170,21 @@ exports.member_create_get = function(req, res, next) {
                 Member.findByIdAndUpdate(req.params.id, member, {}, function (err, member) {
                     if (err) { return next(err); }
                     // Successful - redirect to genre detail page.
-                    res.redirect(member.url);
+                    res.redirect('/member/myprofile');
                 });
             }
         }
     ];
 
 exports.member_create_get_pend = function(req, res, next) {
-  Member.findById(req.params.id)
+  //Member.findById(req.params.id)
   res.render('profile-form/pendidikan')
 }
 
-
+/*
 exports.member_create_post_pend = (req, res, next) => {
           // Create a Book object with escaped and trimmed data.
-          var member = new Member(
+          var pend = new Pend(
             {
               pendidikan: req.body.pendidikan
              });
@@ -196,10 +195,18 @@ exports.member_create_post_pend = (req, res, next) => {
         return;
         }
         else {
+<<<<<<< HEAD
             member.save(function (err) {
+=======
+            // Data from form is valid.
+            // Check if Genre with same name already exists.
+            // Data from form is valid. Save book.
+            pend.save(function (err) {
+>>>>>>> trial-8
                 if (err) { return next(err); }
                    //successful - redirect to new book record.
-                   res.redirect(member.url);
+                   res.redirect('/');
                 });
         }
       }
+*/
