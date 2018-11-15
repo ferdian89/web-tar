@@ -2,20 +2,13 @@ extends layout-form
 
 block content
   .bottom-main-container
-    form.form-example(action='', method='get')
+    form.form-example(action='', method='POST')
       .form-group
-        label(for='exampleFormControlTextarea1') Sholat Wajib
-        textarea#exampleFormControlTextarea1.form-control(rows='3', placeholder='selalu dikerjkan/tidak, dominannya jamaah/tidak' )
+        label(for='sholat_wajib') Sholat Wajib
+        textarea#exampleFormControlTextarea1.form-control(type="text" rows='3', name="sholat_wajib", placeholder='selalu dikerjkan/tidak, dominannya jamaah/tidak' )
       .form-group
-        label(for='exampleFormControlTextarea1') Pengajian yang diikuti
-        textarea#exampleFormControlTextarea1.form-control(rows='3', placeholder='nama/tempat/ustadz yang diikuti')
+        label(for='pengajian') Pengajian yang diikuti
+        textarea#exampleFormControlTextarea1.form-control(type="text" rows='3', name="pengajian", placeholder='nama/tempat/ustadz yang diikuti')
       .form-group
-        label(for='exampleFormControlTextarea1') Bacaan dan Hafalan Al Quran
-        textarea#exampleFormControlTextarea1.form-control(rows='3', placeholder='lancar/tidak')
-
-
-
-
-
-  
-          
+        label(for='bacaan_alquran') Bacaan dan Hafalan Al Quran
+        textarea#exampleFormControlTextarea1.form-control(type="text" rows='3', name="bacaan_alquran", placeholder='lancar/tidak')
