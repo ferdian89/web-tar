@@ -27,14 +27,27 @@ router.get('/member/myprofile', isLoggedIn, function(req, res, next) {
           if (err) { return next(err); }
           // Successful, so render.
           res.render('member-profile',  { member_list: list_members });
-      })
+      });
 });
-
-
 
 router.get('/member/dashboard', isLoggedIn, function(req, res, next) {
-  res.render('dashboard', { title: 'Express' });
+  Member.find({user: req.user})
+  .exec(function (err, members) {
+          if (err) { return next(err); }
+          // Successful, so render.
+          res.render('dashboard',  { members: members });
+      });
 });
+/*
+router.get('/member/dashboard', isLoggedIn, function(req, res, next) {
+  Member.find({user: req.user}).exec(function(err, list_members) {
+    if (err) {
+      return next(err);
+    }
+      res.render('dashboard', { member_list: list_members});
+  });
+});
+*/
 
 
 router.get('/member/dashboard/form', isLoggedIn, function(req, res, next) {
@@ -49,10 +62,10 @@ router.get('/member/data', isLoggedIn, member_controller.member_create_get);
 router.post('/member/data', isLoggedIn, member_controller.member_create_post);
 
 // GET request to update member.
-router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
+router.get('/member/data/edit', isLoggedIn, member_controller.member_update_get);
 
 // POST request to update member.
-router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
+router.post('/member/data/edit', isLoggedIn, member_controller.member_update_post);
 
 // GET request for one member.
 >>>>>>> trial-8
@@ -68,12 +81,19 @@ router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get
 router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
 
 
+<<<<<<< HEAD
 // create and update of pendidikan data
 router.get('/member/pendidikan', isLoggedIn, member_controller.member_create_get_pend);
 router.post('/member/pendidikan', isLoggedIn, member_controller.member_create_post_pend);
 router.get('/member/:id/update', isLoggedIn, member_controller.member_update_get);
 router.post('/member/:id/update', isLoggedIn, member_controller.member_update_post);
+=======
+// GET request to create member.
+router.get('/member/ibadah', isLoggedIn, member_controller.member_ibadah_create_get);
+>>>>>>> trial-8
 
+// POST request to create member.
+router.post('/member/ibadah', isLoggedIn, member_controller.member_ibadah_create_post);
 
 
 
@@ -82,6 +102,7 @@ router.post('/member/:id/update', isLoggedIn, member_controller.member_update_po
 =======
 
 
+<<<<<<< HEAD
 
 //router.get('/profile/pendidikan', member_controller.member_create_get_pend);
 //router.post('/profile/pendidikan', member_controller.member_create_post_pend);
@@ -117,6 +138,8 @@ router.get('/profile/harapan', function(req, res, next) {
 
 
 
+>>>>>>> trial-8
+=======
 >>>>>>> trial-8
 module.exports = router;
 

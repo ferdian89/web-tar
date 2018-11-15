@@ -93,7 +93,11 @@ exports.member_create_get = function(req, res, next) {
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 domisili: req.body.domisili,
-                domisili_mahrom: req.body.domisili_mahrom
+                domisili_mahrom: req.body.domisili_mahrom,
+                tempat_lahir: req.body.tempat_lahir,
+                tanggal_lahir: req.body.tanggal_lahir,
+                email: req.user.email,
+                telepon: req.body.telepon
                });
 
           if (!errors.isEmpty()) {
@@ -108,7 +112,7 @@ exports.member_create_get = function(req, res, next) {
               member.save(function (err) {
                   if (err) { return next(err); }
                      //successful - redirect to new book record.
-                     res.redirect(member.url);
+                     res.redirect('dashboard');
                   });
           }
         }
@@ -116,17 +120,13 @@ exports.member_create_get = function(req, res, next) {
 
 
 // Display Member update form on GET.
-exports.member_update_get = function (req, res, next) {
-    Member.findById(req.params.id, function (err, results) {
-        if (err) { return next(err); }
-        if (results.member == null) { // No results.
-            var err = new Error('Member not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Success.
-        res.render('profile-form/data-diri', { title: 'Update Member', member: results.member });
-    });
+exports.member_update_get = function(req, res, next) {
+  Member.find({user: req.user})
+  .exec(function (err, members) {
+          if (err) { return next(err); }
+          // Successful, so render.
+          res.render('profile-form/data-diri',  { members: members });
+      });
 };
 
 
@@ -176,6 +176,7 @@ exports.member_update_get = function (req, res, next) {
         }
     ];
 
+<<<<<<< HEAD
 exports.member_create_get_pend = function(req, res, next) {
   //Member.findById(req.params.id)
   res.render('profile-form/pendidikan')
@@ -210,3 +211,41 @@ exports.member_create_post_pend = (req, res, next) => {
         }
       }
 */
+=======
+
+exports.member_ibadah_create_get = function(req, res, next) {
+      res.render('profile-form/ibadah')
+    }
+
+
+    // Handle book create on POST.
+
+exports.member_ibadah_create_post = [
+      (req, res, next) => {
+                // Create a Book object with escaped and trimmed data.
+                var ibadah = new Ibadah(
+                  {
+                    user: req.user,
+                    sholat_wajib: req.body.sholat_wajib,
+                    pengajian: req.body.pengajian,
+                    bacaan_alquran: req.body.bacaan_alquran
+                   });
+
+              if (!errors.isEmpty()) {
+                  // There are errors. Render the form again with sanitized values/error messages.
+                  res.render('profile-form/ibadah');
+              return;
+              }
+              else {
+                  // Data from form is valid.
+                  // Check if Genre with same name already exists.
+                  // Data from form is valid. Save book.
+                  member.save(function (err) {
+                      if (err) { return next(err); }
+                         //successful - redirect to new book record.
+                         res.redirect('dashboard');
+                      });
+              }
+            }
+        ];
+>>>>>>> trial-8

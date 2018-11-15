@@ -1,26 +1,16 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='')
-    meta(name='author', content='')
-    title Album example for Bootstrap
-    // Bootstrap core CSS
-    link(href='../../stylesheets/bootstrap.min.css', rel='stylesheet')
-    link(href='../../stylesheets/style.css', rel='stylesheet')
-    // Custom styles for this template
-    link(href='stylesheets/album.css', rel='stylesheet')
-  body
+extends layout
+
+block content
+    h3 welcome 
     .text-center
     .list-group.font-form
-      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/form')
+      a.list-group-item.list-group-item-action(href='/member/dashboard/form')
         | Form
       a.list-group-item.list-group-item-action(href= '/member/myprofile')
         | My Profile
-      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/cari-pasangan')
+      a.list-group-item.list-group-item-action(href='/member/dashboard/cari-pasangan')
         | Calon Pasangan Taaruf
-      a.list-group-item.list-group-item-action(href='http://localhost:3000/member/dashboard/request-taaruf')
+      a.list-group-item.list-group-item-action(href='/member/dashboard/request-taaruf')
         | Request Taaruf
 
     script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')

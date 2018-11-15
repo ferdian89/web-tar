@@ -5,14 +5,14 @@ block content
   each member in member_list
     h4 Data diri
       h5 Nama : #{member.name}
-      h5 Tempat/Tanggal lahir :
+      h5 Tempat/Tanggal lahir : #{member.tempat_lahir+' ,'+member.tanggal_lahir}
       h5 Domisili Sekarang : #{member.domisili}
       h5 Domisili (mahrom/wali/ortu) : #{member.domisili_mahrom}
-      h5 Suku :
-      h5 Email :
-      h5 No Telpon/HP :
+      h5 Suku : #{member.name}
+      h5 Email : #{member.email}
+      h5 No Telpon/HP : #{member.telepon}
     hr
-    a(href= member/data) Update untuk Data
+    a(href='/member/data/edit') Edit
 
     h4 Gambaran Fisik
     p saya berbadan standar tinggi sekitar 166-170 dan berat sekitar51 - 55 berwarna kulit putih kekuningan dengan tipe rambut ikal.saya tidak pernah merokok dan tidak bertato. saya alhamdulillahtidak ada riwayat penyakit serius.
@@ -22,6 +22,9 @@ block content
     h4 Organisasi
     h4 Keluarga
     h4 Ibadah
+      h5 Sholat Wajib : #{ibadah.sholat_wajib}
+      h5 Pengajian yang diikuti :
+      h5 Bacaan dan Hafalan Al quran : 
     h4 Harapan
       h5 Sumber dana acara pernikahan
         p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
